@@ -21,4 +21,4 @@ boids-cli will generate a random number of animated boids with random speeds and
 
 ### About
 
-Only the two first rules of the algorithm are implemented, since we're using integers as coordinates there is no real notion of velocity in this implementations.
+Only the two first rules of the algorithm are implemented, since we're using integers as coordinates there is no real notion of velocity in this implementation.
