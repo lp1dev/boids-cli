@@ -1,5 +1,5 @@
 ## Boids CLI
-
+1;2802;0c
 Boids CLI is a command-line representation of the boids algorithm, used to represent flocks (of 'boids') mostly.
 
 ### Requirements
@@ -16,8 +16,7 @@ Boids CLI is a command-line representation of the boids algorithm, used to repre
 
 boids-cli will generate a random number of animated boids with random speeds and positions, calculated based on your terminal size.
 
-![screenshot](https://github.com/lp1dev/boids-cli/raw/boids.gif")
-
+![screenshot](https://raw.githubusercontent.com/lp1dev/boids-cli/master/boids.gif)
 
 ### About
 
