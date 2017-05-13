@@ -5,6 +5,7 @@ from shutil import get_terminal_size
 from modules.boid import Boid
 from modules.window import Window
 
+min_distance = 2
 term = get_terminal_size((80, 20))
 window = Window(term.lines, term.columns)
 boids = []
@@ -15,33 +16,42 @@ def init():
     for i in range(randrange(window.x)):
         randx = randrange(window.x)
         randy = randrange(window.y)
-        boids.append(Boid(randx, randy))
+        randSpeed = randrange(3) + 1
+        boids.append(Boid(randx, randy, randSpeed))
     return
 
-def rule1():
-    """
-    Rule1 : Boids try to fly towards the centre of mass of neighbouring boids
-    """
+def rule2(boid):
+    movement = [boid.x, boid.y]
+    for b in boids:
+        if b != boid:
+            if (abs((b.x - boid.x) + (b.y - boid.y)) < min_distance):
+                movement[0] -= b.x - boid.x
+                movement[1] -= b.y - boid.y
+    print('Boid[%i, %i] -> %s' %(boid.x, boid.y, movement))
+    boid.towards(movement[0], movement[1])
+
+def rule1(boid):
     # First we calculate the centre of mass of the boids and store it inside target
     total = [0, 0]
-    for boid in boids:
-        total[0] += boid.x
-        total[1] += boid.y
+    for b in boids:
+        if b != boid:
+            total[0] += b.x
+            total[1] += b.y
     target[0] = total[0] // len(boids)
     target[1] = total[1] // len(boids)
-    # Then we move the boids towards this point
-    for boid in boids:
-        boid.towards(target[0], target[1])
+    # Then we move the boid towards this point
+    boid.towards(target[0], target[1])
     return
 
 def move():
-    rule1()
+    for boid in boids:
+        rule1(boid)
+        rule2(boid)
     return
 
 def render():
     for boid in boids:
         window.set(boid.x, boid.y, boid.char)
-    window.set(target[0], target[1], 'T')
     window.display()
     window.flush()
 

@@ -2,7 +2,7 @@ from time import sleep
 
 class Window:
     def __init__(self, x, y):
-        self.timeout = 1
+        self.timeout = 0.2
         self.x = x - 2
         self.y = y
         self.lines = []
