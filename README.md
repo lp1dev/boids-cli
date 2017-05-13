@@ -1,5 +1,5 @@
 ## Boids CLI
-1;2802;0c
+
 Boids CLI is a command-line representation of the boids algorithm, used to represent flocks (of 'boids') mostly.
 
 ### Requirements
